@@ -43,7 +43,7 @@ model_parameters = {
 }
 
 train_parameters = {
-    "parallel": 3,
+    "parallel": 6,
     "workers": 0, 
 }
 
@@ -52,7 +52,7 @@ dataset_parameters = {
     "significant_digits": 2,
     "charge": 1,
     "name": "DDA-Suspectlist",
-    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/small_test_server_output", 
+    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output", 
 }
 
 fingerprint_parameters = {
@@ -63,7 +63,7 @@ fingerprint_parameters = {
 motif_parameter = 20
 
 from matchms.importing import load_from_mgf
-dataset = list(load_from_mgf("/lustre/BIF/nobackup/konto008/thesis_data/Case_Study_Fungal_dataset.mgf"))
+dataset = list(load_from_mgf("/lustre/BIF/nobackup/konto008/thesis_data/msn_positive_filtered.mgf"))
 
 motif_spectra, optimized_motifs, motif_fps = MS2LDA.run(dataset, n_motifs=n_motifs, n_iterations=n_iterations,
         dataset_parameters=dataset_parameters,
