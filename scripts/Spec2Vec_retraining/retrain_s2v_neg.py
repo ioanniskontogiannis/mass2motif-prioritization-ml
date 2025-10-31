@@ -3,8 +3,8 @@ from spec2vec import SpectrumDocument
 from spec2vec.model_building import train_new_word2vec_model
 
 # Paths
-spectra_path_neg = "/lustre/BIF/nobackup/konto008/thesis_data/s2v_filtered_neg.mgf"
-model_file_neg = "/lustre/BIF/nobackup/konto008/thesis_data/291025_s2v_filtered_neg.model"
+spectra_path_neg = "/lustre/BIF/nobackup/konto008/thesis_data/s2v_filtered_2_neg.mgf"
+model_file_neg = "/lustre/BIF/nobackup/konto008/thesis_data/311025_s2v_filtered_neg.model"
 
 def main():
     print("Loading spectra...")
