@@ -9,22 +9,14 @@ from tqdm import tqdm
 from rdkit import Chem
 import matchms.filtering as msfilters
 from MS2LDA.Preprocessing.load_and_clean import load_mgf
-from MS2LDA.Add_On.Spec2Vec.annotation import calc_embeddings, load_s2v_and_library
+from MS2LDA.Add_On.Spec2Vec.annotation import calc_embeddings, load_s2v_model
 
 
 spectra_path_neg = "/lustre/BIF/nobackup/konto008/thesis_data/s2v_filtered_2_neg.mgf"
 model_file_neg = "/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_negative_mode/311025_s2v_filtered_neg.model"
 
 
-dummy_object = {}
-
-# create a dummy pickle file in order to bypass load_s2v_and_library
-with open("dummy.pkl", "wb") as f:
-    pickle.dump(dummy_object, f)
-
-dummy_pkl_file = "dummy.pkl"
-
-s2v_similarity, _ = load_s2v_and_library(model_file_neg, dummy_pkl_file)
+s2v_similarity= load_s2v_model(model_file_neg)
 
 spectra_neg = load_mgf(spectra_path_neg)
 
