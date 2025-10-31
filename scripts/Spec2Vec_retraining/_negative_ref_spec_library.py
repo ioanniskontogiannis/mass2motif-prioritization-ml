@@ -10,7 +10,7 @@ from MS2LDA.Add_On.Spec2Vec.annotation import calc_embeddings, load_s2v_and_libr
 
 
 spectra_path_neg = "/lustre/BIF/nobackup/konto008/thesis_data/s2v_filtered_2_neg.mgf"
-model_file_neg = "/lustre/BIF/nobackup/konto008/thesis_data/311025_s2v_filtered_neg.model"
+model_file_neg = "/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_negative_mode/311025_s2v_filtered_neg.model"
 
 
 dummy_object = {}
@@ -59,7 +59,7 @@ for spectrum in tqdm(spectra_neg):
 
 x,y,z = np.array(embeddings_neg).shape
 
-np.save("MS2LDA/Add_On/Spec2Vec/model_positive_mode_fast/150225_CleanedLibraries_Spec2Vec_pos_embeddings.npy", np.array(embeddings_neg).reshape(x,z))
+np.save("/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_negative_mode/311025_filtered_Spec2Vec_neg_embeddings.npy", np.array(embeddings_neg).reshape(x,z))
 
 def create_spectra_db_from_list(spectra_list, db_path):
     """Create an SQLite database to store spectra from a list of spectra objects."""
@@ -86,5 +86,5 @@ def create_spectra_db_from_list(spectra_list, db_path):
     conn.commit()
     conn.close()
 
-create_spectra_db_from_list(cleaned_spectra_neg, "MS2LDA/Add_On/Spec2Vec/model_positive_mode_fast/150225_CombLibraries_spectra_b.db")
+create_spectra_db_from_list(cleaned_spectra_neg, "/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_negative_mode/311025_filtered_spectra.db")
 
