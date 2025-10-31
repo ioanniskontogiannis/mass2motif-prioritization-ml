@@ -1,4 +1,7 @@
 
+import sys
+sys.path.insert(0, "/lustre/BIF/nobackup/konto008/MS2LDA")
+
 import numpy as np
 import sqlite3
 import pickle
