@@ -16,7 +16,7 @@ def main():
     print(f"Training Spec2Vec model on {len(spectrum_documents_neg)} spectra...")
     model_neg = train_new_word2vec_model(
         spectrum_documents_neg,
-        iterations=[15],   
+        iterations=[13],   
         filename=model_file_neg,
         workers=8,
         progress_logger=True
