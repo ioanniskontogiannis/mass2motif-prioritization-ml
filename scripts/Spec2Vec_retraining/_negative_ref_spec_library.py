@@ -9,8 +9,8 @@ from MS2LDA.Preprocessing.load_and_clean import load_mgf
 from MS2LDA.Add_On.Spec2Vec.annotation import calc_embeddings, load_s2v_and_library
 
 
-spectra_path_neg = "/lustre/BIF/nobackup/konto008/thesis_data/s2v_filtered_neg.mgf"
-model_file_neg = "/lustre/BIF/nobackup/konto008/thesis_data/291025_s2v_filtered_neg.model"
+spectra_path_neg = "/lustre/BIF/nobackup/konto008/thesis_data/s2v_filtered_2_neg.mgf"
+model_file_neg = "/lustre/BIF/nobackup/konto008/thesis_data/311025_s2v_filtered_neg.model"
 
 
 dummy_object = {}
@@ -23,13 +23,13 @@ dummy_pkl_file = "dummy.pkl"
 
 s2v_similarity, _ = load_s2v_and_library(model_file_neg, dummy_pkl_file)
 
-spectra_pos = load_mgf(spectra_path_neg)
+spectra_neg = load_mgf(spectra_path_neg)
 
-cleaned_spectra_pos = []
-embeddings_pos = []
+cleaned_spectra_neg = []
+embeddings_neg = []
 
 
-for spectrum in tqdm(spectra_pos):
+for spectrum in tqdm(spectra_neg):
     # metadata filters
     spectrum = msfilters.default_filters(spectrum)
     spectrum = msfilters.add_retention_index(spectrum)
@@ -51,7 +51,40 @@ for spectrum in tqdm(spectra_pos):
         smi2D = Chem.MolToSmiles(mol)
         
         spectrum.set("smiles", smi2D)
-        cleaned_spectra_pos.append(spectrum)
+        cleaned_spectra_neg.append(spectrum)
         
         embedding = calc_embeddings(s2v_similarity, [spectrum])
-        embeddings_pos.append(embedding)
+        embeddings_neg.append(embedding)
+
+
+x,y,z = np.array(embeddings_neg).shape
+
+np.save("MS2LDA/Add_On/Spec2Vec/model_positive_mode_fast/150225_CleanedLibraries_Spec2Vec_pos_embeddings.npy", np.array(embeddings_neg).reshape(x,z))
+
+def create_spectra_db_from_list(spectra_list, db_path):
+    """Create an SQLite database to store spectra from a list of spectra objects."""
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS spectra (
+            id TEXT PRIMARY KEY,
+            smiles TEXT,
+            spectrum BLOB
+        )
+    ''')
+    conn.commit()
+
+    for i, spectrum in enumerate(spectra_list):
+        spectrum_id = i
+        smiles = spectrum.get('smiles')
+        spectrum_blob = pickle.dumps(spectrum)
+        cursor.execute('''
+            INSERT OR REPLACE INTO spectra (id, smiles, spectrum)
+            VALUES (?, ?, ?)
+        ''', (spectrum_id, smiles, spectrum_blob))
+
+    conn.commit()
+    conn.close()
+
+create_spectra_db_from_list(cleaned_spectra_neg, "MS2LDA/Add_On/Spec2Vec/model_positive_mode_fast/150225_CombLibraries_spectra_b.db")
+
