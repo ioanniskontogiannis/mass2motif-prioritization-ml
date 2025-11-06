@@ -4,7 +4,7 @@ from spec2vec.model_building import train_new_word2vec_model
 
 # Paths
 spectra_path_neg = "/lustre/BIF/nobackup/konto008/thesis_data/s2v_filtered_2_neg.mgf"
-model_file_neg = "/lustre/BIF/nobackup/konto008/thesis_data/311025_s2v_filtered_neg.model"
+model_file_neg = "/lustre/BIF/nobackup/konto008/thesis_data/061125_s2v_filtered_neg.model"
 
 def main():
     print("Loading spectra...")
