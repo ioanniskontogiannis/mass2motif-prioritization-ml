@@ -13,7 +13,7 @@ from MS2LDA.Add_On.Spec2Vec.annotation import calc_embeddings, load_s2v_model
 
 
 spectra_path_neg = "/lustre/BIF/nobackup/konto008/thesis_data/s2v_filtered_2_neg.mgf"
-model_file_neg = "/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_negative_mode/061125_s2v_filtered_neg.model"
+model_file_neg = "/lustre/BIF/nobackup/konto008/thesis_data/061125_s2v_filtered_neg.model"
 
 
 s2v_similarity= load_s2v_model(model_file_neg)
