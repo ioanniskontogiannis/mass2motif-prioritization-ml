@@ -28,7 +28,7 @@ annotation_parameters = {
     "s2v_library_db": "/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_positive_mode/150225_CombLibraries_spectra.db",
 }
 
-n_motifs = 300 
+n_motifs = 1000 
 n_iterations = 5000
 
 import random
@@ -52,7 +52,7 @@ dataset_parameters = {
     "significant_digits": 2,
     "charge": 1,
     "name": "DDA-Suspectlist",
-    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output", 
+    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output_1000", 
 }
 
 fingerprint_parameters = {
