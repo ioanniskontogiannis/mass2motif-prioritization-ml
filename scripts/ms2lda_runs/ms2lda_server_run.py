@@ -28,7 +28,7 @@ annotation_parameters = {
     "s2v_library_db": "/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_positive_mode/150225_CombLibraries_spectra.db",
 }
 
-n_motifs = 1000 
+n_motifs = 750
 n_iterations = 5000
 
 import random
