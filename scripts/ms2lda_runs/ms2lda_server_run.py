@@ -43,7 +43,7 @@ model_parameters = {
 }
 
 train_parameters = {
-    "parallel": 6,
+    "parallel": 3,
     "workers": 0, 
 }
 
@@ -52,7 +52,7 @@ dataset_parameters = {
     "significant_digits": 2,
     "charge": 1,
     "name": "DDA-Suspectlist",
-    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output_750", 
+    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output_w0_1", 
 }
 
 fingerprint_parameters = {
@@ -60,7 +60,7 @@ fingerprint_parameters = {
     "threshold": 0.8,
 }
 
-motif_parameter = 20
+motif_parameter = 50
 
 from matchms.importing import load_from_mgf
 dataset = list(load_from_mgf("/lustre/BIF/nobackup/konto008/thesis_data/msn_positive_filtered.mgf"))
