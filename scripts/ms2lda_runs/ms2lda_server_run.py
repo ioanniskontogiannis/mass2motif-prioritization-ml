@@ -52,7 +52,7 @@ dataset_parameters = {
     "significant_digits": 2,
     "charge": 1,
     "name": "DDA-Suspectlist",
-    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output_1000", 
+    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output_750", 
 }
 
 fingerprint_parameters = {
