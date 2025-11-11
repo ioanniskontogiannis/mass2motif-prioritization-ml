@@ -44,7 +44,7 @@ model_parameters = {
 
 train_parameters = {
     "parallel": 3,
-    "workers": 0, 
+    "workers": 1, 
 }
 
 dataset_parameters = {
@@ -52,7 +52,7 @@ dataset_parameters = {
     "significant_digits": 2,
     "charge": 1,
     "name": "DDA-Suspectlist",
-    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output_w0_1", 
+    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output_w1_2", 
 }
 
 fingerprint_parameters = {
