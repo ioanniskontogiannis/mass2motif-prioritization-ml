@@ -28,7 +28,7 @@ annotation_parameters = {
     "s2v_library_db": "/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_positive_mode/150225_CombLibraries_spectra.db",
 }
 
-n_motifs = 750
+n_motifs = 1000
 n_iterations = 5000
 
 import random
@@ -37,8 +37,8 @@ model_parameters = {
     "rm_top": 0, 
     "min_cf": 0,
     "min_df": 3,
-    "alpha": 0.6, #A higher alpha makes the document preferences "smoother" over topics
-    "eta": 0.1, #and a higher eta makes the topic preferences "smoother" over words.
+    "alpha": 0.02, #A higher alpha makes the document preferences "smoother" over topics
+    "eta": 0.005, #and a higher eta makes the topic preferences "smoother" over words.
     "seed": 42,
 }
 
@@ -52,7 +52,7 @@ dataset_parameters = {
     "significant_digits": 2,
     "charge": 1,
     "name": "DDA-Suspectlist",
-    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/filtered_pos_output_w1_2", 
+    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/positive_1000", 
 }
 
 fingerprint_parameters = {
