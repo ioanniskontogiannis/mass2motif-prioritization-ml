@@ -29,7 +29,7 @@ annotation_parameters = {
     "s2v_library_db": "../../MS2LDA/MS2LDA/Add_On/Spec2Vec/model_positive_mode/150225_CombLibraries_spectra.db",
 }
 
-n_motifs = 10 
+n_motifs = 200 
 n_iterations = 500
 
 import random
