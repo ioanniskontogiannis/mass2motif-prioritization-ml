@@ -42,16 +42,6 @@ results_sos = process_motifs(
     sos_cal=True
 )
 
-import pickle
-
-cache = {
-    "results_sos": results_sos,
-    "motif_to_docs": motif_to_docs
-}
-
-with open("/home/ioannis/thesis_data/negative_test_results_filtered/motif_cache.pkl", "wb") as f:
-    pickle.dump(cache, f)
-
 
 # 4. Extract features
 rows = []
@@ -118,7 +108,7 @@ X_new = df[feature_order]
 df["predicted_score"] = model.predict(X_new)
 df_sorted = df.sort_values("predicted_score", ascending=False)
 
-output_path = "/home/ioannis/thesis_data/negative_test_results_filtered/neg_prioritized_motifs_filtered_2.xlsx"
+output_path = "/home/ioannis/thesis_data/negative_test_results_filtered/neg_prioritized_motifs_filtered_final.xlsx"
 df_sorted.to_excel(output_path, index=False)
 
 
