@@ -13,7 +13,7 @@ from motif_utils import (
 
 # 1. Load MS2LDA run
 
-RUN_PATH = "/home/ioannis/thesis_data/negative_test_results_filtered"
+RUN_PATH = "/home/ioannis/thesis_data/positive_test_results_filtered_7"
 
 motifDB_1, motifDB_2 = load_motifDB(f"{RUN_PATH}/motifset_optimized.json")
 motifs = motifDB2motifs(motifDB_2)
@@ -108,7 +108,7 @@ X_new = df[feature_order]
 df["predicted_score"] = model.predict(X_new)
 df_sorted = df.sort_values("predicted_score", ascending=False)
 
-output_path = "/home/ioannis/thesis_data/negative_test_results_filtered/neg_prioritized_motifs_filtered_final.xlsx"
+output_path = "/home/ioannis/thesis_data/positive_test_results_filtered_7/pos_prioritized_motifs_filtered7.xlsx"
 df_sorted.to_excel(output_path, index=False)
 
 

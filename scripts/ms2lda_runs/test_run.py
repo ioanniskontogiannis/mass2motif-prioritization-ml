@@ -10,7 +10,7 @@ dataset_parameters = {
         "charge": 1,
         "significant_digits": 2,
         "name": "cleaned_pos_results",
-        "output_folder": "/home/ioannis/thesis_data/positive_test_results_filtered_2"
+        "output_folder": "/home/ioannis/thesis_data/positive_test_results_filtered_7"
     }
 train_parameters =  {
         "parallel": 3,
