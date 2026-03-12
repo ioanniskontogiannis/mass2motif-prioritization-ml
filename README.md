@@ -6,6 +6,17 @@
 This repository contains all notebooks and scripts used to perform data preprocessing, MS2LDA analysis, feature extraction, and machine‑learning–based prioritization of Mass2Motifs.
 The workflow was developed as part of the MSc thesis Prioritizing Mass2Motifs for Metabolite Annotation using Supervised Machine Learning.
 
+## Workflow Overview
+
+![Overview of the Methodology](all_methods_fig.png)
+*Figure: General workflow of this study and the different steps required. a) Preparation of the spectral library used for running MS2LDA for
+Mass2Motif generation. It consists of preprocessing (filtering and deduplication) of the MS𝑛Lib + GNPS and chemical diversity assessment. b)
+Retraining Spec2Vec for negative ionization mode. It consists of preprocessing (filtering and deduplication) of MS𝑛Lib+GNPS negative spectra,
+retraining, and evaluating the new Spec2Vec model. c) Creation of the Mass2Motif input for ML. It consists of running MS2LDA on the preprocessed
+MS𝑛Lib positive spectra, manually curating Mass2Motifs, creating the “relevant” and “noisy” datasets of Mass2Motifs, and parsing the motif features
+used for ML. d) Creation of the Mass2Motif prioritization model. It consists of training the model, internal validation, and external validation by
+running MS2LDA on unseen data to assess the ranking order.*
+
 
 ## Repository Structure
 
