@@ -1,93 +1,144 @@
-# Mass2Motif Prioritization - ML
+# Prioritizing Mass2Motifs for Metabolite Annotation using Supervised Machine Learning
 
 
 
-## Getting started
+## Overview
+This repository contains all notebooks and scripts used to perform data preprocessing, MS2LDA analysis, feature extraction, and machine‑learning–based prioritization of Mass2Motifs.
+The workflow was developed as part of the MSc thesis Prioritizing Mass2Motifs for Metabolite Annotation using Supervised Machine Learning.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## Repository Structure
 
 ```
-cd existing_repo
-git remote add origin https://git.wur.nl/konto008/mass2motif-prioritization-ml.git
-git branch -M main
-git push -uf origin main
+├── Spec2Vec_retraining
+│   ├── _negative_ref_spec_library.py
+│   ├── retrain_s2v_neg.py
+│   ├── validate_s2v.ipynb
+│   └── validate_s2v_bigger_scale.ipynb
+├── chemical_class
+│   ├── chemical_class_neg_ChEBI.ipynb
+│   ├── chemical_class_pos_ChEBI.ipynb
+│   └── chemical_diversity_with_COCONUT.ipynb
+├── filtering_and_deduplication
+│   ├── filtering_Spec2Vec_retraining.ipynb
+│   └── library_filtering_MS2LDA_input.ipynb
+├── machine_learning
+│   ├── ML_neg_external_validation.ipynb
+│   ├── ML_pos_external_validation.ipynb
+│   ├── __pycache__
+│   │   └── motif_utils.cpython-312.pyc
+│   ├── external_validation_plots.ipynb
+│   ├── modeling_internal_validation.ipynb
+│   ├── motif_priority_model.pkl
+│   ├── motif_priority_model_2.pkl
+│   ├── motif_utils.py
+│   ├── prioritization_workflow.py
+│   └── testing_ml_models.ipynb
+├── motif_curation
+│   ├── Mass2Motif_filtering.ipynb
+│   ├── processed_reproducible_motifs.ipynb
+│   ├── reproducibility_check.ipynb
+│   └── stable_motifs_curation.ipynb
+└── ms2lda_runs
+    ├── default_run.py
+    ├── ms2lda_neg.py
+    ├── ms2lda_run.py
+    ├── ms2lda_server_run.py
+    └── test_run.py
 ```
 
-## Integrate with your tools
+## Folder descriptions
 
-- [ ] [Set up project integrations](https://git.wur.nl/konto008/mass2motif-prioritization-ml/-/settings/integrations)
+- **Spec2Vec_retraining** — Scripts and notebooks for retraining Spec2Vec models, including negative‑mode reference library generation and validation workflows.
+- **chemical_class** — Notebooks for chemical investigation of MSnLib using ChEBI and NPClassifier's predictions of the COCONUT database.
+- **filtering_and_deduplication** — Preprocessing notebooks for filtering and deduplication of the dataset that was used as the reference library and retraining of Spec2Vec, and also deduplication of the MSnLib that was later used as input for MS2LDA
+- **machine_learning** — All machine‑learning components: internal and external validation notebooks, trained models (`.pkl`), utility functions (`motif_utils.py`), and the full prioritization workflow (`prioritization_workflow.py`).
+- **motif_curation** — Notebooks for Mass2Motif curation, reproducibility checks, and generating stable motif sets used in downstream modeling.
+- **ms2lda_runs** — Scripts for running MS2LDA in different configurations (default, negative mode, server‑based runs, and test runs for external validation).
 
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
+This project uses the same software environment as **MS2LDA**, since several dependencies (e.g., matchms, gensim, numpy, scipy) must match the versions used during MS2LDA runs. To ensure compatibility, install and activate the MS2LDA environment before running any notebooks or scripts in this repository.
+
+### 1. Install the MS2LDA environment
+
+```bash
+git clone https://github.com/vdhooftcompmet/MS2LDA.git
+cd MS2LDA
+conda env create -f MS2LDA_environment.yml
+conda activate MS2LDA_v2
+./run_analysis.sh --only-download
+```
+### 2. Clone this repository
+
+```bash
+git clone https://github.com/ioanniskontogiannis/mass2motif-prioritization-ml.git
+cd mass2motif-prioritization-ml
+```
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+The full Mass2Motif prioritization workflow is executed through the script  
+`machine_learning/prioritization_workflow.py`. This script performs all required steps:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+- loads the MS2LDA output  
+- runs additional Mass2Motif filtering  
+- applies the trained machine‑learning model  
+- generates a prioritized list of Mass2Motifs  
+- saves the final Excel file (`put_a_name.xlsx`) in your designated output folder  
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### 1. Navigate to the scripts/machine_learning folder
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+```bash
+cd scripts/machine_learning
+```
+### 2. Edit `prioritization_workflow.py`
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Open the script and modify the two paths one at the top and one the bottom:
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+- `ms2lda_output_folder` — the folder containing your MS2LDA results  
+- `output_path` — where the prioritized Excel file should be saved  
+  (usually the same MS2LDA output folder)
 
-## License
-For open source projects, say how it is licensed.
+Example:
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+```python
+RUN_PATH = "/path/to/your/MS2LDA/output/"
+output_folder = "/path/to/your/MS2LDA/output/"
+```
+### 3. Run the workflow
+
+Make sure the MS2LDA environment is activated, then run:
+
+```bash
+python prioritization_workflow.py
+```
+### 4. Output
+
+The output is an Excel file with the prioritized Mass2Motifs. The name and the output folder has been set previously in step 2
+
+
+## Data Availability
+
+All spectral libraries, MS2LDA outputs, machine‑learning training data, the trained prioritization model, external validation results, and all reproducible Mass2Motifs used and produced in this study are available in Zenodo: https://doi.org/10.5281/zenodo.18968803
+
+Every input and output of the study is included, together with information and instructions on how to fully reproduce the workflow.
+
+The new Spec2Vec model for negative ionization mode, along with all required supporting files (reference library, embeddings), is available in the MS2LDA repository:
+
+https://github.com/vdhooftcompmet/MS2LDA
+
+## Citation
+
+If you use this workflow, code, or data, please cite:
+
+Kontogiannis, I., Torres-Ortega, L. R., & van der Hooft, J. (2026). *Prioritizing Mass2Motifs for Metabolite Annotation using Supervised Machine Learning* (Version v1.0). Zenodo. https://doi.org/10.5281/zenodo.18968803
+
+## Contact
+
+For questions, feedback, or collaboration, feel free to reach out:
+
+**Ioannis Kontogiannis**  
+Wageningen University & Research  
+Email: **ioannis.kontogiannis@wur.nl**
+
