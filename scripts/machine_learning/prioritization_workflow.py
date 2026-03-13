@@ -13,7 +13,7 @@ from motif_utils import (
 
 # 1. Load MS2LDA run
 
-RUN_PATH = "/home/ioannis/thesis_data/positive_test_results_filtered_7"
+RUN_PATH = "/home/ioannis/thesis_data/positive_test_results_filtered_5"
 
 motifDB_1, motifDB_2 = load_motifDB(f"{RUN_PATH}/motifset_optimized.json")
 motifs = motifDB2motifs(motifDB_2)
@@ -87,7 +87,7 @@ for motif_id in results_sos["motif_ids"]:
 df = pd.DataFrame(rows)
 
 # Load the trained model
-with open("motif_priority_model_2.pkl", "rb") as f:
+with open("motif_priority_model.pkl", "rb") as f:
     model = pickle.load(f)
 
 # To ensure that the order of the features is exactly the same with the one used in training
@@ -108,7 +108,7 @@ X_new = df[feature_order]
 df["predicted_score"] = model.predict(X_new)
 df_sorted = df.sort_values("predicted_score", ascending=False)
 
-output_path = "/home/ioannis/thesis_data/positive_test_results_filtered_7/pos_prioritized_motifs_filtered7.xlsx"
+output_path = "/home/ioannis/thesis_data/positive_test_results_filtered_5/pos_prioritized_motifs_filtered55.xlsx"
 df_sorted.to_excel(output_path, index=False)
 
 
