@@ -63,7 +63,7 @@ fingerprint_parameters = {
 motif_parameter = 50
 
 from matchms.importing import load_from_mgf
-dataset = list(load_from_mgf("/lustre/BIF/nobackup/konto008/new_ms2lda_runs_input/s2v_filtered_2_neg.mgf"))
+dataset = list(load_from_mgf("/lustre/BIF/nobackup/konto008/new_ms2lda_runs_input/gnps_negative_filtered.mgf"))
 
 motif_spectra, optimized_motifs, motif_fps = MS2LDA.run(dataset, n_motifs=n_motifs, n_iterations=n_iterations,
         dataset_parameters=dataset_parameters,
