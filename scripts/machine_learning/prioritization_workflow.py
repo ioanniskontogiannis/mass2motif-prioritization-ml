@@ -108,7 +108,7 @@ X_new = df[feature_order]
 df["predicted_score"] = model.predict(X_new)
 df_sorted = df.sort_values("predicted_score", ascending=False)
 
-output_path = "/home/ioannis/thesis_data/positive_test_results_filtered_5/pos_prioritized_motifs_filtered55.xlsx"
+output_path = "/home/ioannis/thesis_data/positive_test_results_filtered_5/pos_prioritized_motifs_filtered57.xlsx"
 df_sorted.to_excel(output_path, index=False)
 
 
