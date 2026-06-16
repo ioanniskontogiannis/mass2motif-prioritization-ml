@@ -28,7 +28,7 @@ annotation_parameters = {
     "s2v_library_db": "/lustre/BIF/nobackup/konto008/MS2LDA/MS2LDA/Add_On/Spec2Vec/model_negative_mode/061125_filtered_spectra.db",
 }
 
-n_motifs = 1000
+n_motifs = 400
 n_iterations = 5000
 
 import random
@@ -52,7 +52,7 @@ dataset_parameters = {
     "significant_digits": 2,
     "charge": -1,
     "name": "DDA-Suspectlist",
-    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/new_negative_gnps_1000", 
+    "output_folder": "/lustre/BIF/nobackup/konto008/thesis_data/new_negative_gnps_400", 
 }
 
 fingerprint_parameters = {
@@ -63,7 +63,7 @@ fingerprint_parameters = {
 motif_parameter = 50
 
 from matchms.importing import load_from_mgf
-dataset = list(load_from_mgf("/lustre/BIF/nobackup/konto008/new_ms2lda_runs_input/gnps_negative_filtered.mgf"))
+dataset = list(load_from_mgf("/lustre/BIF/nobackup/konto008/new_ms2lda_runs_input/GNPS_without_mnslib_neg.mgf"))
 
 motif_spectra, optimized_motifs, motif_fps = MS2LDA.run(dataset, n_motifs=n_motifs, n_iterations=n_iterations,
         dataset_parameters=dataset_parameters,
