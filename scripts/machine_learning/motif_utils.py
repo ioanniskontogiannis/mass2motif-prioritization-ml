@@ -258,7 +258,7 @@ def process_motifs(
 
     for motif in tqdm(motifs):
         annotation = motif.get("auto_annotation", [])
-        if len(annotation) <= 1:
+        if len(annotation) < 1:
             continue
 
         try:

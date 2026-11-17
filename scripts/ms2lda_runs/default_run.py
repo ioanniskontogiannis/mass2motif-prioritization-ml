@@ -10,7 +10,7 @@ dataset_parameters = {
         "charge": 1,
         "significant_digits": 2,
         "name": "cleaned_pos_results",
-        "output_folder": "/home/ioannis/thesis_data/positive_test_results_filtered"
+        "output_folder": "/home/ioannis/thesis_data/new_external_validation_paper/gnps_nist14_pos_200"
     }
 train_parameters =  {
         "parallel": 3,
@@ -52,7 +52,8 @@ fingerprint_parameters = {
         "threshold": 0.8
     }
 
-dataset = list(load_from_mgf("/home/ioannis/thesis_data/testing_positive_cleaned_filtered.mgf"))
+dataset = list(load_from_mgf("/home/ioannis/thesis_data/GNPS-NIST14-MATCHES_pos_cleaned_deduplicated.mgf"))
+print(f'Spectra: {len(dataset)}')
 start= time.time()
 n_motifs = 200
 n_iterations = 5000
